@@ -14,13 +14,13 @@ The demonstration site is located at the following link: https://pixeltomato.git
 Clone the project
 
 ```bash
-git clone https://github.com/PixelTomato/propo-solve.git
+git clone https://github.com/PixelTomato/propo-solve.git propo-solve
 ```
 
 Go to the project directory
 
 ```bash
-cd my-project
+cd propo-solve
 ```
 
 Host `index.html` locally. There are no dependencies to install.
