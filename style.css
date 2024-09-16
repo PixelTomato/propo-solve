@@ -1,0 +1,134 @@
+:root {
+    --primary: #222831;
+    --secondary: #31363f;
+    --accent: #76abae;
+    --text: #eeeeee;
+}
+
+* {
+    box-sizing: border-box;
+    gap: 10px;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    background: var(--primary);
+    font-family: "Arial", Arial, Helvetica, sans-serif;
+    color: var(--text);
+}
+
+hr {
+    border: solid var(--primary) 1px;
+}
+
+input {
+    padding: 0.6em;
+    background: var(--primary);
+    border-radius: 0.4em;
+    border: none;
+    color: var(--text);
+    outline: none;
+    width: 100%;
+}
+
+button {
+    padding: 0.6em;
+    background: var(--accent);
+    border-radius: 0.4em;
+    border: none;
+    color: var(--text);
+    outline: none;
+    cursor: pointer;
+    filter: brightness(90%);
+    transition: filter 0.25s;
+}
+
+button:hover {
+    filter: brightness(80%);
+    transition: filter 0.25s;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: solid var(--primary) 1px;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    backdrop-filter: brightness(90%);
+}
+
+tr:first-child {
+    background: var(--primary);
+    filter: brightness(120%);
+}
+
+.variable-input {
+    border-right: solid var(--secondary) 2px;
+    border-radius: 0px;
+}
+
+.wide {
+    width: 100%;
+}
+
+.primary {
+    background: var(--primary);
+}
+
+.card-zone {
+    margin-top: 0.25em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.card {
+    background: var(--primary);
+    display: flex;
+    flex-direction: column;
+    padding: 0.25em;
+    border-radius: 0.5em;
+}
+
+.header {
+    margin: 0.5em;
+    font-weight: bold;
+}
+
+.panel {
+    background: var(--secondary);
+    border-radius: 0.5em;
+    padding: 0.25em;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 10px;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.vertical {
+    flex-direction: column;
+    width: 400px;
+}
