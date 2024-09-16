@@ -22,6 +22,8 @@ body {
 
 hr {
     border: solid var(--primary) 1px;
+    margin: 0px;
+    margin-bottom: 8px;
 }
 
 input {
@@ -67,9 +69,20 @@ tr:nth-child(even) {
     backdrop-filter: brightness(90%);
 }
 
-tr:first-child {
-    background: var(--primary);
-    filter: brightness(120%);
+thead {
+    background: #29303b;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+
+.scroll-panel {
+    height: min-content;
+    overflow-y: auto;
+}
+
+.truth-panel {
+    position: relative;
 }
 
 .variable-input {
@@ -86,7 +99,6 @@ tr:first-child {
 }
 
 .card-zone {
-    margin-top: 0.25em;
     display: flex;
     flex-direction: column;
     gap: 0.25em;
@@ -111,6 +123,9 @@ tr:first-child {
     background: var(--secondary);
     border-radius: 0.5em;
     padding: 0.25em;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
 }
 
 .container {

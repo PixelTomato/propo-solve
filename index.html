@@ -14,7 +14,7 @@
                     <hr>
                     <input id="proposition" placeholder="This is some text">
                 </div>
-                <div class="panel flex-1 variables-panel">
+                <div class="panel variables-panel">
                     <p class="header">Symbols</p>
                     <hr>
                     <div class="card-zone">
@@ -29,13 +29,31 @@
                         </div>
                     </div>
                 </div>
+                <div class="panel flex-1">
+                    <p class="header">Examples</p>
+                    <hr>
+                    <div class="card-zone">
+                        <div class="card">
+                            <button class="primary example">(p⊕q)</button>
+                            <button class="primary example">(p→q)</button>
+                            <button class="primary example">((p→q)∧(q→r))→(p→r)</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="flex-1 panel">
+            <div class="flex-1 panel truth-panel">
                 <p class="header">Truth Table</p>
                 <hr>
-                <table id="truth-table">
-                    
-                </table>
+                <div class="scroll-panel">
+                    <table>
+                        <thead id="truth-table-head">
+
+                        </thead>
+                        <tbody id="truth-table">
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </body>

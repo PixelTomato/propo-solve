@@ -112,7 +112,7 @@ function applyOp(index) {
             equation = equation.substring(0, index - 1) + out + equation.substring(index + 2);
             break;
         case "→":
-            out = (left || (left && right)) ? "T" : "F";
+            out = (!left || (left && right)) ? "T" : "F";
             equation = equation.substring(0, index - 1) + out + equation.substring(index + 2);
             break;
         case "↔":
@@ -160,7 +160,14 @@ document.querySelectorAll(".symbol").forEach(element => {
     });
 });
 
-propositionInput.addEventListener("input", () => {
+document.querySelectorAll(".example").forEach(element => {
+    element.addEventListener("click", event => {
+        propositionInput.value = element.innerText;
+        propositionInput.dispatchEvent(new Event("input"));
+    });
+});
+
+propositionInput.addEventListener("input", async () => {
     let varNames = [];
 
     propositionInput.value.split("").forEach(char => {
@@ -172,21 +179,23 @@ propositionInput.addEventListener("input", () => {
     table = new TruthTable(propositionInput.value.replaceAll(" ", ""), varNames);
 
     let tableElement = document.getElementById("truth-table");
+    let headElement = document.getElementById("truth-table-head");
 
     let headerElement = document.createElement("tr");
 
-    for (let i = 0; i < table.varCount; i++) { // Add header row to table.
-        let colElement = document.createElement("td");
+    for (let i = 0; i < table.varCount; i++) {
+        let colElement = document.createElement("th");
         colElement.innerText = table.variables[i];
         headerElement.appendChild(colElement);
     }
 
-    let temp = document.createElement("td");
+    let temp = document.createElement("th");
     temp.innerText = "values";
     headerElement.appendChild(temp);
 
     tableElement.innerHTML = "";
-    tableElement.appendChild(headerElement);
+    headElement.innerHTML = "";
+    headElement.appendChild(headerElement);
 
     for (let row = 0; row < table.table.values.length; row++) {
         let rowElement = document.createElement("tr");
