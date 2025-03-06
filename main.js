@@ -149,34 +149,50 @@ function insert(string, position, newString) {
     return string.slice(0, position) + newString + string.slice(position);
 }
 
-const propositionInput = document.getElementById("proposition");
+const input = document.getElementById("proposition");
+
+function substitute(template, replacement) {
+    if (input.value.includes(template)) {
+        let cursor = input.selectionStart;
+        input.value = input.value.replaceAll(template, replacement);
+        input.selectionStart = input.selectionEnd = cursor - (template.length - 1);
+    }
+}
 
 document.querySelectorAll(".symbol").forEach(element => {
     element.addEventListener("click", event => {
-        let tempProposition = propositionInput.selectionStart;
-        propositionInput.value = insert(propositionInput.value, propositionInput.selectionStart, element.innerText);
-        propositionInput.focus();
-        propositionInput.selectionStart = propositionInput.selectionEnd = tempProposition + 1;
+        let cursor = input.selectionStart;
+        input.value = insert(input.value, input.selectionStart, element.innerText);
+        input.focus();
+        input.selectionStart = input.selectionEnd = cursor + 1;
+        input.dispatchEvent(new Event("input"));
     });
 });
 
 document.querySelectorAll(".example").forEach(element => {
     element.addEventListener("click", event => {
-        propositionInput.value = element.innerText;
-        propositionInput.dispatchEvent(new Event("input"));
+        input.value = element.innerText;
+        input.dispatchEvent(new Event("input"));
     });
 });
 
-propositionInput.addEventListener("input", async () => {
+input.addEventListener("input", async () => {
+    substitute("<->", "↔");
+    substitute("->", "→");
+    substitute("&", "∧");
+    substitute("|", "∨");
+    substitute("^", "⊕");
+    substitute("!", "¬");
+
     let varNames = [];
 
-    propositionInput.value.split("").forEach(char => {
+    input.value.split("").forEach(char => {
         if (!varNames.includes(char) && char.match(/[a-z]/)) {
             varNames.push(char);
         }
     });
 
-    table = new TruthTable(propositionInput.value.replaceAll(" ", ""), varNames);
+    table = new TruthTable(input.value.replaceAll(" ", ""), varNames);
 
     let tableElement = document.getElementById("truth-table");
     let headElement = document.getElementById("truth-table-head");

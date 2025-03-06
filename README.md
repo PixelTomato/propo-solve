@@ -6,7 +6,18 @@ Proposolve supports order of operations, parenthesis, seven operators, and up to
 
 Not all operators have been tested sufficiently to guarantee all inputs will produce the correct outputs, and the underlying algorithm is still likely inefficient as this is solely a proof-of-concept experiment.
 
+To make typing logic symbols simpler, some shortcuts have been defined:
+| Symbol | Shortcut |
+|--------|----------|
+| ∧      | `&`      |
+| ∨      | `\|`     |
+| ¬      | `!`      |
+| ⊕      | `^`      |
+| →      | `->`     |
+| ↔      | `<->`    |
+
 ## Demo
+
 The demonstration site is located at the following link: https://pixeltomato.github.io/propo-solve/
 
 ## Run Locally
